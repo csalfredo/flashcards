@@ -1,0 +1,55 @@
+<% include ../partials/header %>
+
+<div class="jumbotron" id="title">
+    <div class="container">
+        <h1>Update Quiz</h1>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row" id="cRow">
+            <div class="col-lg-4 col-sm-6">
+
+            </div>
+            <div class="col-lg-4 col-sm-6">
+
+            </div>
+
+            <div class="col-lg-4 col-sm-6" id="cCol">
+                    <a href="/" class="btn btn-secondary" id="firstRow">Go Back</a>
+            </div>
+    </div>
+    <div class="row">
+           
+        <div class="col-lg-4 col-sm-6">
+            <div class="img-thumbnail">
+            
+                <div class="caption center-block">
+                    <% topics.forEach(function(cTopic){ %>
+                        <div class="file-topic">
+                       
+                            <!-- <h4><%= cTopic.topic %></h4> -->
+                            <a href="/quiz/<%= cTopic._id %>" class="btn btn-secondary"><%= cTopic.topic %></a>
+                            <form action="/quiz/<%=cTopic._id%>?_method=DELETE" method="POST">
+                                <!-- <a href="/" class="btn btn-warning" id="btnDelete">Delete</a>-->
+                                <button class="btn btn-danger" id="btnDelete">Delete</button>
+                            </form>
+   
+                        </div>
+  
+                   <% }) %>               
+                   
+
+                </div>
+
+            
+            </div>
+ 
+        </div>
+    
+    </div>
+
+</div>
+
+<% include ../partials/myfooter %>

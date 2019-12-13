@@ -1,0 +1,59 @@
+<% include partials/header %>
+
+<div class="jumbotron" id="title">
+    <div class="container">
+        <h1>Flash Cards</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="Shape">
+        <div class="currentTitle">
+            <h2>Quiz</h2>
+        </div>
+
+        <div class="question">
+            <ol class="mySection">
+                <li>
+                    How many amendments does the constitution have?
+                    <div class="line"></div>
+                </li>
+
+                <ol type="a">
+                     <li span="answ">14</li>
+                     <li span="answ">21</li>
+                     <li span="answ">25</li>
+                     <li span="answ">27</li>                  
+                </ol>
+            </ol>
+        </div>
+        <button class="toggleButton" value="Next">Next</button>
+    </div>
+    
+</div>
+<% include partials/myfooter %>
+<script src="index.js"></script>
+<!-- let boxOne = document.getElementsByClassName("Shape")[0];
+
+document.getElementsByClassName("toggleButton")[0].onclick = function(){
+    if (this.innerHTML === "Next") {
+        this.innerHTML = "Pause";
+        boxOne.classList.add("horizTranslate");
+       
+    }
+    else{
+        this.innerHTML = "Next";
+        let computedStyle = window.getComputedStyle(boxOne), marginLeft = computedStyle.getPropertyValue("margin-left");
+
+        boxOne.style.marginLeft = marginLeft;
+        boxOne.classList.remove("horizTranslate");
+        boxOne.style.marginLeft = marginLeft;
+    }
+
+} -->
+
+<!-- // document.querySelector("button").addEventListener("click", function(){
+//     console.log("you just clicked on the button");
+
+//     document.querySelector(".container").classList.add("hide");
+// }); -->

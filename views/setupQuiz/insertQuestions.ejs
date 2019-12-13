@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+
+<div class="jumbotron" id="title">
+        <div class="container">
+            <h1>New Study Session</h1>
+        </div>
+</div>
+
+<div class="container">
+    <div class="form-group">
+            <form action="/quiz/<%= topic._id %>" method="POST">
+
+                <div class="shape3">
+                    <div class="currentTitle2">
+                        <h4>Insert Questions: <strong><%= topic.topic %></strong></h4>                
+                    </div>
+        
+                    <div class="questionsMultiple">
+        
+                        <div class="currentQ">
+                            <h3>Please Enter Question</h3>
+                        </div>
+                        <ol>
+                            <li>
+                                <input type="text" name="choice[question]">
+                            </li>
+                        </ol>
+        
+                        <div class="multipleChoice">
+                            <div class="questionTitle">
+                                <h4>Please enter user choices</h4>
+                            </div>
+                            <ol type="A">
+                                <li><input type="text" name="choice[choice1]"></li>
+                                <li><input type="text" name="choice[choice2]"></li>
+                                <li><input type="text" name="choice[choice3]"></li>
+                                <li><input type="text" name="choice[choice4]" placeholder="Correct answer goes here">
+                                    <strong><p>(correct answer)</p></strong>
+                                </li>  
+                            </ol>
+                            <div class="form-group">
+                                    <% topic.counter++ %>
+                                    <button class="btn btn-primary" id="submitQ">Submit</button>
+                            </div>
+
+                            <div class="form-group">
+                                <a href="/"class="btn btn-primary" id="ex">Exit</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+    </div>
+
+</div>
+
+<% include ../partials/myfooter %>

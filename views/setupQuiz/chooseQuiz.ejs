@@ -1,0 +1,55 @@
+<% include ../partials/header %>
+
+<div class="jumbotron" id="title">
+    <div class="container">
+        <h1>Choose Quiz</h1>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row" id="cRow">
+            <div class="col-lg-4 col-sm-6">
+
+            </div>
+            <div class="col-lg-4 col-sm-6">
+
+            </div>
+
+            <div class="col-lg-4 col-sm-6" id="cCol">
+                    <a href="/" class="btn btn-secondary" id="firstRow">Go Back</a>
+            </div>
+    </div>
+    <div class="row" id="chooseRow">
+           
+        <div class="col-lg-4 col-sm-6" id="chooseCol">
+            <div class="img-thumbnail">
+            
+                <div class="caption center-block">
+                    <% topics.forEach(function(cTopic){ %>
+                        <div class="file-topic">
+                       
+                            <!-- <h4><%= cTopic.topic %></h4> -->
+                            <a href="/quiz/<%= cTopic._id %>/progress" class="btn btn-secondary"><%= cTopic.topic %></a>
+
+   
+                        </div>
+  
+                   <% }) %>               
+                   
+
+                </div>
+
+            
+            </div>
+ 
+        </div>
+
+
+    
+    </div>
+
+</div>
+
+
+<% include ../partials/myfooter %>
