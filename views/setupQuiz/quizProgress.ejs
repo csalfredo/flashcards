@@ -19,25 +19,33 @@
  
             </div>
            
+            <form>
                 <div class="question">
                    <%= "q.counter is " + q.counter %>
+                   <%= "Choice is: " + query.choice %>
                     <% for(q.counter; q.counter < q.choices.length; q.counter++) {%>      
                         <% let testingCounter = q.counter; %>
-                        <li>
-                               <!-- How many amendments does the Constitution have? -->
-                              
-                               <% console.log("length is " + q.choices.length) %>
-
-                                <%= q.choices[q.counter].question %>
-                        </li>
    
-                        <div class="line"></div>
-                       
+                        <div class="line"><%= q.choices[q.counter].question %></div>
+                           <%
+                             var positions = [1, 2, 3, 4];
+                             // based on: https://javascript.info/task/shuffle
+                             positions.sort(() => Math.random() - 0.5);
+
+                             for (var j = 0; j < positions.length; j++) {
+                                 var choicename = "choice" + positions[j];
+                                 %>
+                                 <input type="radio" name="choice" value="<%= positions[j] %>" id="<%= choicename %>">
+                                   <%= q.choices[q.counter][choicename] %>
+                                </input>
+                                 <%
+                             }
+                           %>
+                            
                             <li type="a" class="num"><%= q.choices[q.counter].choice1 %></li>
                             <li type="a" class="num"><%= q.choices[q.counter].choice2 %></li>
                             <li type="a" class="num"><%= q.choices[q.counter].choice3 %></li>
                             <li type="a" class="num"><%= q.choices[q.counter].choice4 %></li>
-  
                         
                             <% break; %>
                         <% }%>
@@ -50,7 +58,7 @@
             </div>
 
             <button class="toggleButton" value="Next">Next</button>
-        
+        </form>
 </div>
 
 </div>

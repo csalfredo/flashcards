@@ -175,14 +175,15 @@ app.get("/quiz/chooseQuiz", function(request, resolve){
 //TODO: Quiz in progress
 app.get("/quiz/:id/progress", function(request, resolve){
 
-
+console.log("Request Query is ", request.query);
         //TODO: find Quiz by id
         Quiz3.findById(request.params.id).populate("choices").exec(function(err, currentQuiz){
+            
             if (err) {
                 console.log(err);
             }
             else{
-                resolve.render("setupQuiz/quizProgress", { q: currentQuiz});
+                resolve.render("setupQuiz/quizProgress", { q: currentQuiz, query: request.query});
             }
         })
 });
