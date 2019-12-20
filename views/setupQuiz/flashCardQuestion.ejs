@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<% q.counter = 0 %>
+<% q.counter = flashCardId %>
 
 <div class="jumbotron" id="title">
     <div class="container">
@@ -24,7 +24,7 @@
                 <h2>Quiz: <strong><%= q.topic %></strong></h2>
             </div>
 
-            <form>
+            <form action="/quiz/<%= q._id%>/flashcard/<%= flashCardId%>/result">
                 <div class="question">
                     
                     <% var answer = q.choices[q.counter].choice4 %>

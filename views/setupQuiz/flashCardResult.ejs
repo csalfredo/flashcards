@@ -1,0 +1,82 @@
+<% include ../partials/header %>
+<p>Flashcard id is: <%= flashCardId %></p>
+<% q.counter = flashCardId %>
+
+<div class="jumbotron" id="title">
+    <div class="container">
+        <h1>Quiz</h1>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+      
+    <div class="Shape">
+        <div class="displayWrong">
+            <h5>Wrong</h5>
+        </div>
+            <div class="displayCorrect">
+                    <h5>Correct</h5>
+            </div>
+            <div class="currentTitle">
+                <h2>Quiz: <strong><%= q.topic %></strong></h2>
+            </div>
+
+            <form>
+                <div class="question">
+                    
+                    <% var answer = q.choices[q.counter].choice4 %>
+
+                   <%= "q.counter is " + q.counter %>
+                   <%= "Choice is: " + query.choice %>
+                    <% for(q.counter; q.counter < q.choices.length; q.counter++) {%>      
+                        <% let testingCounter = q.counter; %>
+   
+                        <div class="line"><%= q.choices[q.counter].question %></div>
+                           <%
+                             var positions = [1, 2, 3, 4];
+                             // based on: https://javascript.info/task/shuffle
+                             positions.sort(() => Math.random() - 0.5);
+
+                             for (var j = 0; j < positions.length; j++) {
+                                 var choicename = "choice" + positions[j];
+                                 %>
+
+                                <li type="a" class="num"><input type="radio" name="choice" value="<%= positions[j] %>" id="<%= choicename %>"></input>
+                                    <%= q.choices[q.counter][choicename] %></li>
+                                 <%
+                             }
+                           %>
+                            
+                            <!-- <li type="a" class="num"><%= q.choices[q.counter].choice1 %></li>
+                            <li type="a" class="num"><%= q.choices[q.counter].choice2 %></li>
+                            <li type="a" class="num"><%= q.choices[q.counter].choice3 %></li>
+                            <li type="a" class="num"><%= q.choices[q.counter].choice4 %></li> -->
+                        
+                            <% break; %>
+                        <% }%>
+
+                        <% var tempNum = parseInt(query.choice)
+                        var temp = "choice" + tempNum;
+                        %>            
+                            <% if(q.choices[q.counter].choice4 === q.choices[q.counter][temp]){ %>
+                                    <h1>Correct</h1>
+                                <% } else{ %>
+
+                                    <h1><%= q.choices[q.counter].choice4 %> </h1>
+                                    <h1><%= q.choices[q.counter][temp]%></h1>
+                               <% } %>
+                    
+            </div>
+            <input type="text" name="questionNum" value="<%= q.counter %>">
+            <button class="toggleButton" value="Next">Next</button>
+        </form>
+        <a href="/quiz/<%= q._id %>/flashcard/<%= q.counter + 1 %>/question" class="btn btn-secondary">Next flashcard for <%= q.topic %></a>
+
+</div>
+
+</div>
+
+<% include ../partials/myfooter %>

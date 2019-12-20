@@ -173,20 +173,36 @@ app.get("/quiz/chooseQuiz", function(request, resolve){
 });
 
 //TODO: Quiz in progress
-app.get("/quiz/:id/progress", function(request, resolve){
+app.get("/quiz/:quizid/flashcard/:flashcardid/question", function(request, resolve){
 
 console.log("Request Query is ", request.query);
         //TODO: find Quiz by id
-        Quiz3.findById(request.params.id).populate("choices").exec(function(err, currentQuiz){
+        Quiz3.findById(request.params.quizid).populate("choices").exec(function(err, currentQuiz){
             
             if (err) {
                 console.log(err);
             }
-            else{
-                resolve.render("setupQuiz/quizProgress", { q: currentQuiz, query: request.query});
+            else {
+                resolve.render("setupQuiz/flashCardQuestion", { q: currentQuiz, flashCardId: request.params.flashcardid,  query: request.query});
             }
         })
 });
+
+//TODO: Question Results
+app.get("/quiz/:quizid/flashcard/:flashcardid/result", function(request, resolve){
+
+    console.log("Request Query is ", request.query);
+            //TODO: find Quiz by id
+            Quiz3.findById(request.params.quizid).populate("choices").exec(function(err, currentQuiz){
+                
+                if (err) {
+                    console.log(err);
+                }
+                else{
+                    resolve.render("setupQuiz/flashCardResult", { q: currentQuiz, flashCardId: request.params.flashcardid, query: request.query});
+                }
+            })
+    });
 
 //TODO: REMOVE TOPIC
 app.delete("/quiz/:id", function(request, resolve){
