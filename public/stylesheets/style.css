@@ -295,6 +295,24 @@ ol li::before{
     text-align: left;
 }
 
+.displayCorrect{
+    float: right;
+    color: green;
+    border: 1px brown solid;
+    border-radius: 50%;
+    padding: 1%;
+    display: none;
+}
+
+.displayWrong{
+    float: left;
+    color: red;
+    border: 1px brown solid;
+    border-radius: 50%;
+    padding: 1%;
+    display: none;
+}
+
 
 .file-topic{
     
