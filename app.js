@@ -204,6 +204,23 @@ app.get("/quiz/:quizid/flashcard/:flashcardid/result", function(request, resolve
             })
     });
 
+    //TODO:Display Quiz Results
+    app.get("/quiz/:quizid/flashcard/:flashcardid/quizResult", function(request, resolve){
+            //TODO: find Quiz by id
+            Quiz3.findById(request.params.quizid).populate("choices").exec(function(err, currentQuiz){
+                
+                if (err) {
+                    console.log(err);
+                }
+                else{
+                    console.log("currenQuiz is " + currentQuiz);
+                    // resolve.render("setupQuiz/flashCardResult", { q: currentQuiz, flashCardId: request.params.flashcardid, query: request.query});
+
+                     resolve.render("setupQuiz/flashCardQuizResult", { q: currentQuiz, flashCardId: request.params.flashcardid, query: request.query});
+                }
+            })      
+    });
+
 //TODO: REMOVE TOPIC
 app.delete("/quiz/:id", function(request, resolve){
     Quiz3.findByIdAndRemove(request.params.id, function(err){
